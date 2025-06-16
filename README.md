@@ -68,4 +68,4 @@ log_set_lock([](bool lock, void* udata) {
 
 ## LICENSE
 
-This project is licensed under the MIT License. Ported and extended from [rxi/log.c](https://github.com/rxi/log.c) , which is also MIT Licensed.
+This project is licensed under the MIT License. Ported and extended from [rxi/log.c](https://github.com/rxi/log.c), which is also MIT Licensed.
