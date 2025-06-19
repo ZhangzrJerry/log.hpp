@@ -19,7 +19,7 @@
 
 #ifdef _WIN32
 #include <windows.h>
-void showConsole() {
+void show_console() {
   DWORD processId = GetCurrentProcessId();
   HWND hwnd = GetConsoleWindow();
   if (!hwnd) {
@@ -29,7 +29,7 @@ void showConsole() {
   ShowWindow(hwnd, SW_SHOW);
 }
 #else
-void showConsole() {}
+void show_console() {}
 #endif
 
 typedef struct {
