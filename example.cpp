@@ -24,7 +24,7 @@ int main() {
 
   // Set quiet mode to suppress console output
   log_set_quiet(true);
-  log_debug("This debug won't go to file (level is INFO)");
+  log_fatal("This is a fatal error message");
   log_set_quiet(false);
   log_fatal("This is a fatal error message");
 
