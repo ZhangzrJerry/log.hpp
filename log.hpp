@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <mutex>
 
 #define LOG_VERSION "0.1.0"
 #define MAX_CALLBACKS 32
@@ -61,6 +62,7 @@ static struct {
 
 enum { LOG_TRACE, LOG_DEBUG, LOG_INFO, LOG_WARN, LOG_ERROR, LOG_FATAL };
 
+static std::mutex log_mutex;
 static const char *level_strings[] = {"TRACE", "DEBUG", "INFO",
                                       "WARN",  "ERROR", "FATAL"};
 
@@ -103,6 +105,7 @@ static void file_callback(log_Event *ev) {
 }
 
 static void lock(void) {
+  log_mutex.lock();
   if (L.lock) {
     L.lock(true, L.udata);
   }
@@ -112,6 +115,7 @@ static void unlock(void) {
   if (L.lock) {
     L.lock(false, L.udata);
   }
+  log_mutex.unlock();
 }
 
 const char *log_level_string(int level) { return level_strings[level]; }
